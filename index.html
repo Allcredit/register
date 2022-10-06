@@ -124,13 +124,9 @@ body{
             form.addEventListener('submit', e => {
               e.preventDefault()
               fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => Swal.fire(
-  'Good job!',
-  'You clicked the button!',
-  'success'
-))
+                .then(response => alert("บันทึกข้อมูลเรียบร้อยแล้ว..ลูกค้าอย่าลืมกด 'ยืนยันการลงทะเบียน' ด้วยนะคะ"))
                 .catch(error => console.error('Error!', error.message))
-                  form.closeWindow(); 
+                  form.reset(); 
        return false; 
             })  
   window.onload = function(e){
@@ -141,7 +137,7 @@ body{
             stext.onclick = () => {
               var messagetext = [{
     "type": "text",
-    "text": "ยืนยันรับเครดิตฟรี"
+    "text": "รับเครดิตฟรี"
 }]
               sendflex(messagetext)
             }
