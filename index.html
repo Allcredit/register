@@ -34,12 +34,20 @@ body{
     border-width: 5px;
     border-color: #000000;
 }
-.botton1{
+.botton{
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(180deg, #ffc200, #ff8200);
   border-radius: 10px;
+}
+.botton1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(180deg, #ff0000, #510202);
+  border-radius: 10px;
+  margin: 10px;
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -101,13 +109,12 @@ body{
 <label for="name5" class="form-label"><i class="fas fa-money-check"></i> เลขที่บัญชี</label>
 <input type="text" class="form-control" name="name5" placeholder=" 9876543210 " required>
 </div>
+<div class="botton">
+<button type="submit" class="btn btn-lg" style="color: rgb(255, 255, 255);"><i class="fas fa-save"></i>ลงทะเบียน</button>
+</div>
 <div class="botton1">
-<button type="submit" class="btn btn-lg" style="color: rgb(255, 255, 255);"><i class="fas fa-save"></i> ลงทะเบียน</button>
-
-</div>
-<div class="botton2">
-<button type="button" id="sent" class="btn btn-lg" style="color: rgb(255, 255, 255);"><i class="fas fa-save"></i>ยืนยันรับเครดิตฟรี</button>
-</div>
+  <button type="send" class="btn btn-lg" style="color: rgb(255, 255, 255);"><i class="fas fa-save"></i>ยืนยันรับเครดิตฟรี</button>
+  </div>
 
   </form>
 <script>
@@ -121,9 +128,7 @@ body{
                 .catch(error => console.error('Error!', error.message))
                   form.reset(); 
        return false; 
-            })
-  
-  
+            })  
   window.onload = function(e){
       liff.init({liffId: "1657065398-7Gd2RyDd"}, function(){
         liff.ready.then(() =>{
