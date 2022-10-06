@@ -61,6 +61,7 @@
                                  
                                 <div class="col-12 text-end">
                                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <button type="button" id="send" class="btn btn-danger">ยืนยันการลงทะเบียน</button>
                                 </div>
                                 <p id="demo"></p>
                             </div>
@@ -76,15 +77,51 @@
      
  
    <script>
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzrGVKMxRcWqF239CW311QNIKorrsxWhaGprE1xS7O-wXBfbuy4YgaxtwwysLnwpBzo/exec'
-            const form = document.forms['sheet1']
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwUJZ8YNRyEtEr_m3WP9P-T8LHhgSicZWMF0EA4gV0dNcXtoVeWo-c5PAWaRLWSTd4B/exec'
+            const form = document.forms['contact']
             
             form.addEventListener('submit', e => {
               e.preventDefault()
               fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => document.getElementById("demo").innerHTML = "<div class='alert alert-primary' role='alert'><b>Thank You for providing the details, We shall get back to you shortly !</b></div>",contact.reset())
+                .then(response => alert("บันทึกข้อมูลเรียบร้อยแล้ว..ลูกค้าอย่าลืมกด 'ยืนยันการลงทะเบียน' ด้วยนะคะ"))
                 .catch(error => console.error('Error!', error.message))
+                  form.reset(); 
+       return false; 
             })
+            window.onload = function(e){
+      liff.init({liffId: "1656911523-Kz8kkVNq"}, function(){
+        liff.ready.then(() =>{
+          if(liff.isLoggedIn()){
+            var stext = document.getElementById("send")
+            stext.onclick = () => {
+              var messagetext = [{
+    "type": "text",
+    "text": "ยืนยันรับเครดิตฟรี"
+}]
+              sendflex(messagetext)
+            }
+            
+          } else {
+            liff.login()
+            
+          }
+          
+          
+        })
+        
+      })
+      
+      function sendflex(flex){
+        liff.sendMessages(flex).then(function(){
+          liff.closeWindow()
+          
+        })
+        
+      }
+      
+    }
+            
+            
     </script>
  
               
